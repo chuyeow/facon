@@ -1,0 +1,16 @@
+History.txt
+Manifest.txt
+README.txt
+Rakefile
+lib/facon.rb
+lib/facon/core_ext/object.rb
+lib/facon/error_generator.rb
+lib/facon/expectation.rb
+lib/facon/mock.rb
+lib/facon/mockable.rb
+lib/facon/proxy.rb
+lib/facon/spec_methods.rb
+spec/expectation_spec.rb
+spec/mock_spec.rb
+spec/spec_helper.rb
+spec/stub_spec.rb
