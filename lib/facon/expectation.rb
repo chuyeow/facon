@@ -3,7 +3,7 @@ require 'forwardable'
 module Facon
   class Expectation
     extend ::Forwardable
-    def_delegators :@error_generator, :raise_expectation_error
+    def_delegators :@error_generator, :raise_expectation_error, :raise_block_failed_error
 
     attr_reader :error_generator, :expectation_ordering, :expected_from, :method, :method_block, :expected_received_count, :actual_received_count, :argument_expectation
 
@@ -24,7 +24,7 @@ module Facon
 
     # Sets up the expected method to return the given value.
     def and_return(value)
-      raise AmbiguousReturnError unless @method_block.nil?
+      raise MockExpectationError, 'Ambiguous return expectation' unless @method_block.nil?
 
       @return_block = lambda { value }
     end
@@ -58,7 +58,7 @@ module Facon
         throw @symbol_to_throw unless @symbol_to_throw.nil?
 
         return_value = if !@method_block.nil?
-          @method_block.call(*args)
+          invoke_method_block(args)
         elsif @args_to_yield.size > 0
           @args_to_yield.each { |curr_args| block.call(*curr_args) }
         else
@@ -107,6 +107,12 @@ module Facon
         when :any then true
         when args then true
         end
+      end
+
+      def invoke_method_block(args)
+        @method_block.call(*args)
+      rescue => e
+        raise_block_failed_error(@method, e.message)
       end
   end
 

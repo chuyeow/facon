@@ -20,14 +20,9 @@ module Facon
       mock_proxy.verify
     end
 
-    private
-      # Returns the mock proxy object.
-      def mock_proxy
-        if Mock === self
-          @mock_proxy ||= Proxy.new(self, @name)
-        else
-          @mock_proxy ||= Proxy.new(self, self.class.name)
-        end
-      end
+    # Returns the mock proxy object.
+    def mock_proxy
+      @mock_proxy ||= Proxy.new(self, Mock === self ? @name : self.class.name)
+    end
   end
 end

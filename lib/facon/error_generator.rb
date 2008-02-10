@@ -19,6 +19,11 @@ module Facon
       raise(Facon::MockExpectationError, message)
     end
 
+    def raise_block_failed_error(method, exception_message)
+      message = "#{target_name} received :#{method} but passed block failed with: #{exception_message}"
+      raise(Facon::MockExpectationError, message)
+    end
+
     private
       def target_name
         @name ? "Mock '#{@name}'" : @target.inspect

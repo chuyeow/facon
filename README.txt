@@ -1,33 +1,33 @@
-= facon
+= Facon
 
-* http://facon.rubyforge.org/
-
-== DESCRIPTION:
+Facon website: http://facon.rubyforge.org/
 
 Facon is a mocking library in the spirit of the Bacon spec library. Small, compact, and works out of the box with Bacon.
 
-== FEATURES/PROBLEMS:
-
-* FIX (list of features or problems)
-
-== SYNOPSIS:
+== Synopsis
 
   FIX (code sample of usage)
 
-== REQUIREMENTS:
+== Requirements
 
 * Ruby 1.8
 * Bacon (optional, required for running specs)
 
-== INSTALL:
+== Installation
 
-* gem install facon
+Simply install the gem:
+  gem install facon
 
-== LICENSE:
+== Thanks to
+
+* RSpec (http://rspec.info/) for creating spec/mocks, from which a lot of the code for Facon is stolen.
+* Christian Neukirchen (http://rubyforge.org/projects/test-spec/) for creating Bacon.
+
+== License:
 
 (The MIT License)
 
-Copyright (c) 2008 FIX
+Copyright (c) 2008 Cheah Chu Yeow
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
