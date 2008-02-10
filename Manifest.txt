@@ -10,7 +10,6 @@ lib/facon/expectation.rb
 lib/facon/mock.rb
 lib/facon/mockable.rb
 lib/facon/proxy.rb
-lib/facon/spec_methods.rb
 spec/baconize_spec.rb
 spec/expectation_spec.rb
 spec/mock_spec.rb

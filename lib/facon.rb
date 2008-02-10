@@ -5,10 +5,12 @@ require 'facon/mock'
 require 'facon/error_generator'
 require 'facon/expectation'
 require 'facon/proxy'
-require 'facon/spec_methods'
+require 'facon/baconize'
 
 require 'facon/core_ext/object'
 
+# Facon is a mocking library in the spirit of the Bacon spec library. Small,
+# compact, and works with Bacon.
 module Facon
   VERSION = '0.1'
 end

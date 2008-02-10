@@ -5,6 +5,10 @@ describe "A mock object" do
     @mock = Facon::Mock.new('test mock')
   end
 
+  after do
+    @mock.spec_reset
+  end
+
   def verify_mock
     lambda { @mock.spec_verify }.should.not.raise(Facon::MockExpectationError)
   end

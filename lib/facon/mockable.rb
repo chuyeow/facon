@@ -1,15 +1,26 @@
 module Facon
+  # A module containing convenient methods for creating mocks, stubs and
+  # expectations.
   module Mockable
+
+    # Shortcut for creating a Facon::Mock instance.
+    #
+    # == Example
+    #
+    #   mock = mock('test mock', :foo => 'bar')
+    #   mock.foo # => 'bar'
+    def mock(name, stubs = {})
+      Mock.new(name, stubs)
+    end
+
     def stub!(method)
       mock_proxy.add_stub(caller(1)[0], method)
     end
 
-    # TODO (this should actually be should.receive in Bacon-spirit)
     def should_receive(method, &block)
       mock_proxy.add_expectation(caller(1)[0], method, &block)
     end
 
-    # TODO (this should actually be should.not.receive in Bacon-spirit)
     def should_not_receive(method, &block)
       mock_proxy.add_negative_expectation(caller(1)[0], method, &block)
     end
@@ -18,6 +29,10 @@ module Facon
     # raises a MockExpectationError.
     def spec_verify
       mock_proxy.verify
+    end
+
+    def spec_reset
+      mock_proxy.reset
     end
 
     # Returns the mock proxy object.

@@ -14,6 +14,7 @@ module Facon
     end
 
     def add_stub(expected_from, method)
+      $facon_mocks << (@target) unless $facon_mocks.nil?
       define_expected_method(method)
 
       # A stub is really an expectation that can be called any number of times.
@@ -22,6 +23,7 @@ module Facon
     end
 
     def add_expectation(expected_from, method, &block)
+      $facon_mocks << (@target) unless $facon_mocks.nil?
       define_expected_method(method)
 
       @expectations << Expectation.new(@error_generator, @expectation_ordering, expected_from, method, (block_given? ? block : nil), 1)
@@ -29,6 +31,7 @@ module Facon
     end
 
     def add_negative_expectation(expected_from, method, &block)
+      $facon_mocks << (@target) unless $facon_mocks.nil?
       define_expected_method(method)
 
       @expectations << NegativeExpectation.new(@error_generator, @expectation_ordering, expected_from, method, (block_given? ? block : nil))
@@ -49,11 +52,18 @@ module Facon
 
     def verify
       @expectations.each { |expectation| expectation.met? }
+    ensure
+      reset
+    end
+
+    def reset
+      @expectations.clear
+      @stubs.clear
     end
 
     private
       # Defines an expected method that simply calls the
-      # <code>message_received method</code>.
+      # <code>message_received</code> method.
       def define_expected_method(method)
         metaclass_eval(<<-EOF, __FILE__, __LINE__)
           def #{method}(*args, &block)

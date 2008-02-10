@@ -14,12 +14,10 @@ module Facon
     end
 
     def method_missing(method, *args, &block)
-      begin
-        super(method, *args, &block)
-      rescue NameError
-        # An unexpected method was called on this mock.
-        mock_proxy.raise_unexpected_message_error(method, *args)
-      end
+      super(method, *args, &block)
+    rescue NameError
+      # An unexpected method was called on this mock.
+      mock_proxy.raise_unexpected_message_error(method, *args)
     end
 
     private

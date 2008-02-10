@@ -2,7 +2,7 @@
 
 Facon website: http://facon.rubyforge.org/
 
-Facon is a mocking library in the spirit of the Bacon spec library. Small, compact, and works out of the box with Bacon.
+Facon is a mocking library in the spirit of the Bacon spec library. Small, compact, and works with Bacon.
 
 == Synopsis
 
@@ -17,6 +17,10 @@ Facon is a mocking library in the spirit of the Bacon spec library. Small, compa
 
 Simply install the gem:
   gem install facon
+
+== Bacon integration
+
+See Facon::Baconize for instructions on how to use Facon with Bacon[http://rubyforge.org/projects/test-spec/].
 
 == Thanks to
 
