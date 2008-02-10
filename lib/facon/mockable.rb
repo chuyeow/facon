@@ -14,6 +14,12 @@ module Facon
       mock_proxy.add_negative_expectation(caller(1)[0], method, &block)
     end
 
+    # Verifies that the expectations set on this mock are all met, otherwise
+    # raises a MockExpectationError.
+    def spec_verify
+      mock_proxy.verify
+    end
+
     private
       # Returns the mock proxy object.
       def mock_proxy

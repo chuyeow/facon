@@ -1,5 +1,12 @@
+require 'forwardable'
+
 module Facon
   class Expectation
+    extend ::Forwardable
+    def_delegators :@error_generator, :raise_expectation_error
+
+    attr_reader :error_generator, :expectation_ordering, :expected_from, :method, :method_block, :expected_received_count, :actual_received_count, :argument_expectation
+
     def initialize(error_generator, expectation_ordering, expected_from, method, method_block, expected_received_count = 1)
       @error_generator = error_generator
       @expectation_ordering = expectation_ordering
@@ -15,12 +22,11 @@ module Facon
       @args_to_yield = []
     end
 
-    # Sets up the expected method to return the given value, or the value of the
-    # given block.
-    def and_return(value, &block)
-      Kernel::raise AmbiguousReturnError unless @method_block.nil?
+    # Sets up the expected method to return the given value.
+    def and_return(value)
+      raise AmbiguousReturnError unless @method_block.nil?
 
-      @return_block = block_given? ? block : lambda { value }
+      @return_block = lambda { value }
     end
 
     # Sets up the expected method to yield with the given arguments.
@@ -70,6 +76,15 @@ module Facon
       end
     end
 
+    # Returns true if this expectation has been met.
+    # TODO at_least and at_most conditions
+    def met?
+      return true if @expected_received_count == :any ||
+        @expected_received_count == @actual_received_count
+
+      raise_expectation_error(self)
+    end
+
     # Returns true if the given <code>method</code> and arguments match this
     # Expectation.
     def matches(method, args)
@@ -82,7 +97,7 @@ module Facon
       @method == method && !check_arguments(args)
     end
 
-    def negative_expectation_for(method)
+    def negative_expectation_for?(method)
       false
     end
 
@@ -100,7 +115,7 @@ module Facon
       super(error_generator, expectation_ordering, expected_from, method, method_block, expected_received_count)
     end
 
-    def negative_expectation_for(method)
+    def negative_expectation_for?(method)
       @method == method
     end
   end
