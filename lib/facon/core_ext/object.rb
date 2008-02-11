@@ -1,3 +1,3 @@
-class Object
+class Object #:nodoc:
   include Facon::Mockable
 end

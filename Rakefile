@@ -11,6 +11,6 @@ Hoe.new('facon', Facon::VERSION) do |p|
   p.url = 'http://facon.rubyforge.org/'
   p.description = 'A mocking library in the spirit of the Bacon spec library. Small, compact, and works with Bacon.'
   p.changes = p.paragraphs_of('History.txt', 0..1).join("\n\n")
-  p.remote_rdoc_dir = '' # Release to root
+  p.remote_rdoc_dir = 'rdocs'
   # p.clean_globs = ['test/actual'] # Remove this directory on "rake clean"
 end

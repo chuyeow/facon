@@ -1,6 +1,8 @@
 require 'forwardable'
 
 module Facon
+  # An Expectation, also know as a mock method, is an expectation that an object
+  # should receive a specific message during the execution of an example.
   class Expectation
     extend ::Forwardable
     def_delegators :@error_generator, :raise_expectation_error, :raise_block_failed_error

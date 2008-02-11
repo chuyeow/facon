@@ -83,9 +83,11 @@ end
 
 
 begin
+  Bacon::Context.class_eval { include Facon::Baconize::ContextExtensions }
+  Should.class_eval { include Facon::Baconize::ShouldExtensions }
+rescue NameError
   require 'rubygems'
   require 'bacon'
-
   Bacon::Context.class_eval { include Facon::Baconize::ContextExtensions }
   Should.class_eval { include Facon::Baconize::ShouldExtensions }
 rescue LoadError

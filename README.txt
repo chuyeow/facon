@@ -1,12 +1,38 @@
 = Facon
 
-Facon website: http://facon.rubyforge.org/
-
 Facon is a mocking library in the spirit of the Bacon spec library. Small, compact, and works with Bacon.
 
 == Synopsis
 
-  FIX (code sample of usage)
+To use Facon with Bacon[http://rubyforge.org/projects/test-spec/], simply <code>require 'facon'</code> and you're done.
+
+You can now write Bacon specs like this (in RSpec-like style):
+
+  require 'bacon'
+  require 'facon'
+
+  describe 'PersonController' do
+    before do
+      @konata = mock('konata', :id => 1, :name => 'Konata Izumi')
+      @kagami = mock('kagami', :id => 2, :name => 'Kagami Hiiragi')
+    end
+
+    it "should find all people on GET to 'index'" do
+      Person.should.receive(:find).with(:all).and_return([@konata, @kagami])
+
+      get('/people/index')
+    end
+
+    it "should find the person with id of 1 on Get to 'show/1'" do
+      Person.should.receive(:find).with(1).and_return(@konata)
+
+      get('/people/show/1')
+    end
+  end
+
+For now, more examples can be found in the specs included with the Facon gem. I promise to get better examples into the documentation!
+
+See Facon::Baconize for more documentation on using Facon with Bacon[http://rubyforge.org/projects/test-spec/].
 
 == Requirements
 
@@ -18,9 +44,17 @@ Facon is a mocking library in the spirit of the Bacon spec library. Small, compa
 Simply install the gem:
   gem install facon
 
-== Bacon integration
+== Links
 
-See Facon::Baconize for instructions on how to use Facon with Bacon[http://rubyforge.org/projects/test-spec/].
+* Facon website - http://facon.rubyforge.org/
+* Facon Rubyforge project - http://rubyforge.org/projects/facon/
+* Bacon - http://rubyforge.org/projects/test-spec/
+* RSpec - http://rspec.info/
+
+== Todos
+
+* test/unit and RSpec integration.
+* Remove the $facon_mocks global.
 
 == Thanks to
 

@@ -3,6 +3,15 @@ module Facon
   class MockExpectationError < StandardError
   end
 
+  # A mock object is a 'fake' object on which you can impose simulated behavior.
+  # Defining expectations and stubs on mock objects allows you to specify
+  # object collaboration without needing to actually instantiate those
+  # collaborative objects.
+  #
+  # == Examples
+  #
+  #   mock = mock('A name')
+  #   mock = mock('Mock person', :name => 'Konata', :sex => 'female')
   class Mock
     include Facon::Mockable
 
