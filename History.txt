@@ -1,5 +1,7 @@
 === 0.1 / 2008-02-09
 
-* 1 XXX
-  * XXX
+* First release!
 
+=== 0.2 / 2008-02-13
+
+* Use #after block to verify mocks so that the stack trace is more helpful (it now actually shows the line in the spec where the mock error occurred).

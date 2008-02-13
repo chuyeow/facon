@@ -46,9 +46,14 @@ module Facon
       end
 
       def it_with_mock_verification(description, &block)
+        before do
+          setup_facon_mocks
+        end
         setup_facon_mocks
+        after do
+          verify_facon_mocks
+        end
         it_without_mock_verification(description, &block)
-        verify_facon_mocks
       end
     end
 

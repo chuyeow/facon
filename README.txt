@@ -44,6 +44,11 @@ See Facon::Baconize for more documentation on using Facon with Bacon[http://ruby
 Simply install the gem:
   gem install facon
 
+== The Source Code
+
+You can get the latest trunk from the Subversion repository at:
+  svn://svn.codefront.net/facon/trunk
+
 == Links
 
 * Facon website - http://facon.rubyforge.org/
