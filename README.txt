@@ -60,6 +60,8 @@ You can get the latest trunk from the Subversion repository at:
 
 * test/unit and RSpec integration.
 * Remove the $facon_mocks global.
+* Throw away unnecessary code.
+* Implement exactly, at_least, at_most expectations.
 
 == Thanks to
 
