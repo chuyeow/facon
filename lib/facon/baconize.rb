@@ -45,13 +45,16 @@ module Facon
         $facon_mocks.each { |mock| mock.spec_verify }
       end
 
+      def teardown_facon_mocks
+        $facon_mocks.each { |mock| mock.spec_reset }
+        $facon_mocks.clear
+      end
+
       def it_with_mock_verification(description, &block)
-        before do
-          setup_facon_mocks
-        end
-        setup_facon_mocks
+        @before.unshift(lambda { setup_facon_mocks })
         after do
           verify_facon_mocks
+          teardown_facon_mocks
         end
         it_without_mock_verification(description, &block)
       end

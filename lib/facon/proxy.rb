@@ -10,12 +10,12 @@ module Facon
       @target, @name = target, name
       @expectations = []
       @stubs = []
+      @proxied_methods = []
       @error_generator = ErrorGenerator.new(target, name)
     end
 
     def add_stub(expected_from, method)
-      $facon_mocks << (@target) unless $facon_mocks.nil?
-      define_expected_method(method)
+      add_method(method)
 
       # A stub is really an expectation that can be called any number of times.
       @stubs.unshift(Expectation.new(@error_generator, @expectation_ordering, expected_from, method, nil, :any))
@@ -23,16 +23,14 @@ module Facon
     end
 
     def add_expectation(expected_from, method, &block)
-      $facon_mocks << (@target) unless $facon_mocks.nil?
-      define_expected_method(method)
+      add_method(method)
 
       @expectations << Expectation.new(@error_generator, @expectation_ordering, expected_from, method, (block_given? ? block : nil), 1)
       @expectations.last
     end
 
     def add_negative_expectation(expected_from, method, &block)
-      $facon_mocks << (@target) unless $facon_mocks.nil?
-      define_expected_method(method)
+      add_method(method)
 
       @expectations << NegativeExpectation.new(@error_generator, @expectation_ordering, expected_from, method, (block_given? ? block : nil))
       @expectations.last
@@ -59,17 +57,50 @@ module Facon
     def reset
       @expectations.clear
       @stubs.clear
+      reset_proxied_methods
+      @proxied_methods.clear
     end
 
     private
+      def add_method(method)
+        $facon_mocks << @target unless $facon_mocks.nil? || $facon_mocks.detect { |m| m.equal?(@target) }
+        define_expected_method(method)
+      end
+
       # Defines an expected method that simply calls the
       # <code>message_received</code> method.
       def define_expected_method(method)
+        if @target.respond_to?(method) && !metaclass.method_defined?(munge(method))
+          munged_method = munge(method)
+          metaclass.instance_eval do
+            alias_method munged_method, method if method_defined?(method.to_s)
+          end
+          @proxied_methods << method
+        end
+
         metaclass_eval(<<-EOF, __FILE__, __LINE__)
           def #{method}(*args, &block)
             mock_proxy.message_received(:#{method}, *args, &block)
           end
         EOF
+      end
+
+      def munge(method)
+        "proxied_by_facon__#{method.to_s}".to_sym
+      end
+
+      def reset_proxied_methods
+        @proxied_methods.each do |method|
+          munged_method = munge(method)
+          metaclass.instance_eval do
+            if method_defined?(munged_method.to_s)
+              alias_method method, munged_method
+              undef_method munged_method
+            else
+              undef_method method
+            end
+          end
+        end
       end
 
       def metaclass

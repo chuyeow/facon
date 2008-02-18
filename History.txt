@@ -1,7 +1,12 @@
-=== 0.1 / 2008-02-09
+=== 0.3 / 2008-02-18
 
-* First release!
+* Fixed a bug with proxied methods not being cleared.
+* Fixed a bug where the same mocks were repeatedly being added to $facon_mocks.
 
 === 0.2 / 2008-02-13
 
 * Use #after block to verify mocks so that the stack trace is more helpful (it now actually shows the line in the spec where the mock error occurred).
+
+=== 0.1 / 2008-02-09
+
+* First release!
