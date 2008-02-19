@@ -1,3 +1,7 @@
+=== 0.3.1 / 2008-02-19
+
+* Fixed a bug where mocks were not being teared down when there is a previous spec failure.
+
 === 0.3 / 2008-02-18
 
 * Fixed a bug with proxied methods not being cleared.
