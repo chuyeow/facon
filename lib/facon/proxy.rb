@@ -12,6 +12,7 @@ module Facon
       @stubs = []
       @proxied_methods = []
       @error_generator = ErrorGenerator.new(target, name)
+      @expectation_ordering = nil unless defined?(@expectation_ordering)
     end
 
     def add_stub(expected_from, method)
