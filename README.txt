@@ -47,7 +47,7 @@ versions of Bacon. Use this compatibility chart to find out which versions of Fa
 
 Facon version -- Bacon version
 <= 0.3.x      -- 0.9 (only tested with 0.9 but might work with earlier versions of Bacon)
-0.4           -- 1.1
+0.4           -- 1.0, 1.1
 
 == Installation
 
