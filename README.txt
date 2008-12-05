@@ -73,6 +73,10 @@ You can get the latest trunk from the Git repository on Github:
 * Throw away unnecessary code.
 * Implement exactly, at_least, at_most expectations.
 
+== Contributors
+
+* raggi (http://blog.ra66i.org/) for #times, #once, #never expectation matchers.
+
 == Thanks to
 
 * RSpec (http://rspec.info/) for creating spec/mocks, from which a lot of the code for Facon is stolen.

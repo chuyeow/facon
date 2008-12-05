@@ -1,0 +1,15 @@
+=== 0.4.1 / 2008-12-05
+
+* Added #times, #once and #never expectation matchers. Thanks raggi!
+  E.g. 
+    @mock.should.receive(:call_me_thrice).times(3)
+    @mock.should.receive(:just_this_1_time).once
+    @mock.should.receive(:dont_even_think_about_it).never
+
+=== 0.4.0 / 2008-12-05
+
+* Fix compatibility with Bacon 1.0 and 1.1.
+
+=== 0.3.1 / 2008-02-19
+
+* Fixed a bug where mocks were not being teared down when there is a previous spec failure.
