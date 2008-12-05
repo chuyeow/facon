@@ -8,7 +8,7 @@ Hoe.new('facon', Facon::VERSION) do |p|
   p.author = 'Cheah Chu Yeow'
   p.email = 'chuyeow@gmail.com'
   p.summary = 'Tiny mocking library.'
-  p.url = 'http://facon.rubyforge.org/'
+  p.url = 'http://github.com/chuyeow/facon/'
   p.description = 'A mocking library in the spirit of the Bacon spec library. Small, compact, and works with Bacon.'
   p.changes = p.paragraphs_of('History.txt', 0..1).join("\n\n")
   p.remote_rdoc_dir = 'rdocs'
