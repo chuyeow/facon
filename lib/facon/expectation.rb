@@ -67,7 +67,7 @@ module Facon
           nil
         end
 
-        if @return_block
+        if defined?(@return_block) && @return_block
           args << block unless block.nil?
           @return_block.call(*args)
         else
@@ -102,6 +102,15 @@ module Facon
     def negative_expectation_for?(method)
       false
     end
+    
+    def times(val)
+      @expected_received_count = val
+      self
+    end
+    
+    def once; times(1); end
+    
+    def never; times(0); end
 
     private
       def check_arguments(args)
