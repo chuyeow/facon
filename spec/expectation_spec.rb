@@ -114,11 +114,72 @@ describe "A mock object" do
       end.and_return(:that)
     }.should.raise(Facon::MockExpectationError).message.should == 'Ambiguous return expectation'
   end
+
+  it "should pass when receiving a message the expected number of times" do
+    @mock.should_receive(:message).times(3)
+
+    3.times do
+      @mock.message
+    end
+
+    verify_mock
+  end
+
+  it "should raise a MockExpectationError when receiving a message < expected number of times" do
+    @mock.should_receive(:message).times(3)
+
+    1.times do
+      @mock.message
+    end
+
+    lambda { @mock.spec_verify }.should.raise(Facon::MockExpectationError).message.should == "Mock 'test mock' expected :message with (any args) 3 times, but received it 1 time"
+  end
+
+  it "should raise a MockExpectationError when receiving a message > expected number of times" do
+    @mock.should_receive(:message).times(3)
+
+    5.times do
+      @mock.message
+    end
+
+    lambda { @mock.spec_verify }.should.raise(Facon::MockExpectationError).message.should == "Mock 'test mock' expected :message with (any args) 3 times, but received it 5 times"
+  end
+
+  it "should pass when receiving a message once as expected" do
+    @mock.should.receive(:message).once
+
+    @mock.message
+
+    verify_mock
+  end
+
+  it "should raise a MockExpectationError when never receiving a message but expecting it once" do
+    @mock.should.receive(:message).once
+
+    lambda { @mock.spec_verify }.should.raise(Facon::MockExpectationError).message.should == "Mock 'test mock' expected :message with (any args) 1 time, but received it 0 times"
+  end
+
+  it "should raise a MockExpectationError when receiving a message more than once but expecting it once" do
+    @mock.should.receive(:message).once
+
+    2.times do
+      @mock.message
+    end
+
+    lambda { @mock.spec_verify }.should.raise(Facon::MockExpectationError).message.should == "Mock 'test mock' expected :message with (any args) 1 time, but received it 2 times"
+  end
+
+  it "should pass when never receiving a message as expected" do
+    @mock.should.receive(:message).never
+
+    verify_mock
+  end
+
+  it "should raise a MockExpectationError when receiving a message but never expecting it" do
+    @mock.should.receive(:message).never
+
+    @mock.message
+
+    lambda { @mock.spec_verify }.should.raise(Facon::MockExpectationError).message.should == "Mock 'test mock' expected :message with (any args) 0 times, but received it 1 time"
+  end
 end
-
-
-
-
-
-
-
