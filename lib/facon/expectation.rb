@@ -102,14 +102,14 @@ module Facon
     def negative_expectation_for?(method)
       false
     end
-    
+
     def times(val)
       @expected_received_count = val
       self
     end
-    
+
     def once; times(1); end
-    
+
     def never; times(0); end
 
     private

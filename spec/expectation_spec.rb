@@ -31,7 +31,7 @@ describe "A mock object" do
     @mock.should_not_receive(:not_expected)
     @mock.not_expected
 
-    lambda { @mock.spec_verify }.should.raise(Facon::MockExpectationError).message.should == "Mock 'test mock' expected :not_expected with (any args) 0 times, but received it 1 time" 
+    lambda { @mock.spec_verify }.should.raise(Facon::MockExpectationError).message.should == "Mock 'test mock' expected :not_expected with (any args) 0 times, but received it 1 time"
   end
 
   it "should raise a MockExpectationError when receiving message specified as not to be received with arguments" do
