@@ -39,6 +39,14 @@ See Facon::Baconize for more documentation on using Facon with Bacon[http://ruby
 * Ruby 1.8
 * Bacon (optional, required for running specs)
 
+== Compatibility with Bacon
+
+When used with Bacon, Facon uses some Bacon hooks, which unfortunately causes some compatibility issues with new versions of Bacon. Use this compatibility chart to find out which versions of Facon to install when running with Bacon.
+
+Facon version -- Bacon version
+<= 0.3.x      -- 0.9 (only tested with 0.9 but might work with earlier versions of Bacon)
+0.4           -- 1.1
+
 == Installation
 
 Simply install the gem:
@@ -46,13 +54,13 @@ Simply install the gem:
 
 == The Source Code
 
-You can get the latest trunk from the Subversion repository at:
-  svn://svn.codefront.net/facon/trunk
+You can get the latest trunk from the Git repository on Github:
+  git://github.com/chuyeow/facon.git
 
 == Links
 
+* Github page - http://github.com/chuyeow/facon/
 * Facon website - http://facon.rubyforge.org/
-* Facon Rubyforge project - http://rubyforge.org/projects/facon/
 * Bacon - http://rubyforge.org/projects/test-spec/
 * RSpec - http://rspec.info/
 
