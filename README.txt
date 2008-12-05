@@ -30,7 +30,8 @@ You can now write Bacon specs like this (in RSpec-like style):
     end
   end
 
-For now, more examples can be found in the specs included with the Facon gem. I promise to get better examples into the documentation!
+For now, more examples can be found in the specs included with the Facon gem. I promise to get better examples into the
+documentation!
 
 See Facon::Baconize for more documentation on using Facon with Bacon[http://rubyforge.org/projects/test-spec/].
 
@@ -41,7 +42,8 @@ See Facon::Baconize for more documentation on using Facon with Bacon[http://ruby
 
 == Compatibility with Bacon
 
-When used with Bacon, Facon uses some Bacon hooks, which unfortunately causes some compatibility issues with new versions of Bacon. Use this compatibility chart to find out which versions of Facon to install when running with Bacon.
+When used with Bacon, Facon uses some Bacon hooks, which unfortunately causes some compatibility issues with new
+versions of Bacon. Use this compatibility chart to find out which versions of Facon to install when running with Bacon.
 
 Facon version -- Bacon version
 <= 0.3.x      -- 0.9 (only tested with 0.9 but might work with earlier versions of Bacon)
