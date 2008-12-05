@@ -73,6 +73,7 @@ module Facon
       end
 
       def receive(method, &block)
+        Bacon::Counter[:requirements] += 1 # A should.receive expectation is also a Bacon requirement.
         if @negated
           @object.mock_proxy.add_negative_expectation(caller(1)[0], method, &block)
         else
