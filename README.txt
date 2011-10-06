@@ -4,7 +4,7 @@ Facon is a mocking library in the spirit of the Bacon spec library. Small, compa
 
 == Synopsis
 
-To use Facon with Bacon[http://rubyforge.org/projects/test-spec/], simply <code>require 'facon'</code> and you're done.
+To use Facon with Bacon[https://github.com/chneukirchen/bacon], simply <code>require 'facon'</code> and you're done.
 
 You can now write Bacon specs like this (in RSpec-like style):
 
@@ -33,7 +33,7 @@ You can now write Bacon specs like this (in RSpec-like style):
 For now, more examples can be found in the specs included with the Facon gem. I promise to get better examples into the
 documentation!
 
-See Facon::Baconize for more documentation on using Facon with Bacon[http://rubyforge.org/projects/test-spec/].
+See Facon::Baconize for more documentation on using Facon with Bacon[https://github.com/chneukirchen/bacon].
 
 == Requirements
 
@@ -59,13 +59,6 @@ Simply install the gem:
 You can get the latest trunk from the Git repository on Github:
   git://github.com/chuyeow/facon.git
 
-== Links
-
-* Github page - http://github.com/chuyeow/facon/
-* Facon website - http://facon.rubyforge.org/
-* Bacon - http://rubyforge.org/projects/test-spec/
-* RSpec - http://rspec.info/
-
 == Todos
 
 * test/unit and RSpec integration.
@@ -76,6 +69,7 @@ You can get the latest trunk from the Git repository on Github:
 == Contributors
 
 * raggi (http://blog.ra66i.org/) for #times, #once, #never expectation matchers.
+* ymendel (Yossef Mendelssohn) for Ruby 1.9.2 compatibility fixes.
 
 == Thanks to
 
