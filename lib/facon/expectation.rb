@@ -28,7 +28,7 @@ module Facon
     def and_return(value)
       raise MockExpectationError, 'Ambiguous return expectation' unless @method_block.nil?
 
-      @return_block = lambda { value }
+      @return_block = proc { value }
     end
 
     # Sets up the expected method to yield with the given arguments.
