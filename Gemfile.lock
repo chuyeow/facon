@@ -1,0 +1,16 @@
+PATH
+  remote: .
+  specs:
+    facon (0.5.0)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    bacon (1.1.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bacon
+  facon!
