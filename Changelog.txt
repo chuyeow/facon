@@ -1,3 +1,7 @@
+=== 0.5.0
+* Added Ruby 1.9.2 compatibility. Thanks ymendel!
+* Get rid of that dependency on hoe, use Bundler to manage gem release.
+
 === 0.4.1 / 2008-12-05
 
 * Added #times, #once and #never expectation matchers. Thanks raggi!
@@ -13,3 +17,16 @@
 === 0.3.1 / 2008-02-19
 
 * Fixed a bug where mocks were not being teared down when there is a previous spec failure.
+
+=== 0.3 / 2008-02-18
+
+* Fixed a bug with proxied methods not being cleared.
+* Fixed a bug where the same mocks were repeatedly being added to $facon_mocks.
+
+=== 0.2 / 2008-02-13
+
+* Use #after block to verify mocks so that the stack trace is more helpful (it now actually shows the line in the spec where the mock error occurred).
+
+=== 0.1 / 2008-02-09
+
+* First release!
