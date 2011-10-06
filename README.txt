@@ -73,8 +73,8 @@ You can get the latest trunk from the Git repository on Github:
 
 == Thanks to
 
-* RSpec (http://rspec.info/) for creating spec/mocks, from which a lot of the code for Facon is stolen.
-* Christian Neukirchen (http://rubyforge.org/projects/test-spec/) for creating Bacon.
+* RSpec (https://www.relishapp.com/rspec) for creating spec/mocks, from which a lot of the code for Facon is stolen.
+* Christian Neukirchen for creating Bacon.
 
 == License:
 
