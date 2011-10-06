@@ -7,7 +7,8 @@ describe "Facon::Baconize" do
   end
 
   it "should make the #receive instance method available to Should" do
-    Should.public_instance_methods.should.include?('receive')
+    methods = Should.public_instance_methods.collect { |m|  m.to_s }
+    methods.should.include?('receive')
   end
 
   it "should allow expectations on mocks with should.receive(:message)" do
