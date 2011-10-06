@@ -51,8 +51,8 @@ module Facon
       end
 
       def it_with_mock_verification(description, &block)
-        @before.unshift(lambda { setup_facon_mocks })
-        @after << lambda { verify_facon_mocks }
+        @before.unshift(proc { setup_facon_mocks })
+        @after << proc { verify_facon_mocks }
         it_without_mock_verification(description, &block)
       ensure
         teardown_facon_mocks
