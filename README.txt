@@ -2,6 +2,8 @@
 
 Facon is a mocking library in the spirit of the Bacon spec library. Small, compact, and works with Bacon.
 
+"!https://travis-ci.org/chuyeow/facon.png!":https://travis-ci.org/chuyeow/facon
+
 == Synopsis
 
 To use Facon with Bacon[https://github.com/chneukirchen/bacon], simply <code>require 'facon'</code> and you're done.
