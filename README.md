@@ -1,12 +1,14 @@
-= Facon
+Facon
+=====
 
 Facon is a mocking library in the spirit of the Bacon spec library. Small, compact, and works with Bacon.
 
-"!https://travis-ci.org/chuyeow/facon.png!":https://travis-ci.org/chuyeow/facon
+[![Build Status](https://travis-ci.org/chuyeow/facon.png)](https://travis-ci.org/chuyeow/facon])
 
-== Synopsis
+Synopsis
+--------
 
-To use Facon with Bacon[https://github.com/chneukirchen/bacon], simply <code>require 'facon'</code> and you're done.
+To use Facon with [Bacon](https://github.com/chneukirchen/bacon), simply `require 'facon'` and you're done.
 
 You can now write Bacon specs like this (in RSpec-like style):
 
@@ -35,14 +37,16 @@ You can now write Bacon specs like this (in RSpec-like style):
 For now, more examples can be found in the specs included with the Facon gem. I promise to get better examples into the
 documentation!
 
-See Facon::Baconize for more documentation on using Facon with Bacon[https://github.com/chneukirchen/bacon].
+See Facon::Baconize for more documentation on using Facon with [Bacon](https://github.com/chneukirchen/bacon).
 
-== Requirements
+Requirements
+------------
 
-* Ruby 1.8
+* Ruby (check [Travis CI builds](https://travis-ci.org/chuyeow/facon) for which versions are supported)
 * Bacon (optional, required for running specs)
 
-== Compatibility with Bacon
+Compatibility with Bacon
+------------------------
 
 When used with Bacon, Facon uses some Bacon hooks, which unfortunately causes some compatibility issues with new
 versions of Bacon. Use this compatibility chart to find out which versions of Facon to install when running with Bacon.
@@ -51,34 +55,43 @@ Facon version -- Bacon version
 <= 0.3.x      -- 0.9 (only tested with 0.9 but might work with earlier versions of Bacon)
 0.4           -- 1.0, 1.1
 
-== Installation
+Installation
+------------
 
 Simply install the gem:
-  gem install facon
+  `gem install facon`
 
-== The Source Code
+Or add it to your Gemfile:
+  `gem 'bacon'`
+
+The Source Code
+---------------
 
 You can get the latest trunk from the Git repository on Github:
-  git://github.com/chuyeow/facon.git
+  <git://github.com/chuyeow/facon.git>
 
-== Todos
+Todos
+-----
 
 * test/unit and RSpec integration.
 * Remove the $facon_mocks global.
 * Throw away unnecessary code.
 * Implement exactly, at_least, at_most expectations.
 
-== Contributors
+Contributors
+------------
 
-* James Tucker (https://github.com/raggi) for #times, #once, #never expectation matchers.
-* Yossef Mendelssohn (https://github.com/ymendel) for Ruby 1.9.2 compatibility fixes.
+* [James Tucker](https://github.com/raggi) for #times, #once, #never expectation matchers.
+* [Yossef Mendelssohn](https://github.com/ymendel) for Ruby 1.9.2 compatibility fixes.
 
-== Thanks to
+Thanks to
+---------
 
-* RSpec (http://rspec.info/) for creating spec/mocks, from which a lot of the code for Facon is stolen.
+* [RSpec](http://rspec.info/) for creating spec/mocks, from which a lot of the code for Facon is stolen.
 * Christian Neukirchen for creating Bacon.
 
-== License:
+License
+-------
 
 (The MIT License)
 
