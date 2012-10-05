@@ -68,12 +68,12 @@ You can get the latest trunk from the Git repository on Github:
 
 == Contributors
 
-* raggi (http://blog.ra66i.org/) for #times, #once, #never expectation matchers.
-* ymendel (Yossef Mendelssohn) for Ruby 1.9.2 compatibility fixes.
+* James Tucker (https://github.com/raggi) for #times, #once, #never expectation matchers.
+* Yossef Mendelssohn (https://github.com/ymendel) for Ruby 1.9.2 compatibility fixes.
 
 == Thanks to
 
-* RSpec (https://www.relishapp.com/rspec) for creating spec/mocks, from which a lot of the code for Facon is stolen.
+* RSpec (http://rspec.info/) for creating spec/mocks, from which a lot of the code for Facon is stolen.
 * Christian Neukirchen for creating Bacon.
 
 == License:
