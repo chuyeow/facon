@@ -46,8 +46,10 @@ module Facon
       end
 
       def teardown_facon_mocks
-        $facon_mocks.each { |mock| mock.spec_reset }
-        $facon_mocks.clear
+        if $facon_mocks
+          $facon_mocks.each { |mock| mock.spec_reset }
+          $facon_mocks.clear
+        end
       end
 
       def it_with_mock_verification(description, &block)
@@ -89,15 +91,20 @@ module Facon
   end
 end
 
-
-begin
-  Bacon::Context.class_eval { include Facon::Baconize::ContextExtensions }
-  Should.class_eval { include Facon::Baconize::ShouldExtensions }
-rescue NameError
+unless defined?(Bacon::Context) && defined?(Should)
   require 'rubygems'
-  require 'bacon'
+  begin
+    require 'bacon'
+  rescue LoadError
+    begin
+      require 'mac_bacon'
+    rescue LoadError
+      puts 'Bacon is not available.'
+    end
+  end
+end
+if defined?(Bacon::Context) && defined?(Should)
   Bacon::Context.class_eval { include Facon::Baconize::ContextExtensions }
   Should.class_eval { include Facon::Baconize::ShouldExtensions }
-rescue LoadError
-  puts 'Bacon is not available.'
 end
+
