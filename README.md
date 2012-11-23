@@ -1,7 +1,7 @@
 Facon
 =====
 
-Facon is a mocking library in the spirit of the [Bacon](https://github.com/chneukirchen/bacon) spec library. Small, compact, and works with [Bacon](https://github.com/chneukirchen/bacon).
+Facon is a mocking library in the spirit of the [Bacon](https://github.com/chneukirchen/bacon) spec library. Small, compact, and works with [Bacon](https://github.com/chneukirchen/bacon) and [MacBacon](https://github.com/alloy/MacBacon).
 
 [![Build Status](https://travis-ci.org/chuyeow/facon.png)](https://travis-ci.org/chuyeow/facon)
 
@@ -84,6 +84,7 @@ Contributors
 ------------
 
 * [James Tucker](https://github.com/raggi) for #times, #once, #never expectation matchers.
+* [Peter Kim](https://github.com/petejkim) for [MacBacon](https://github.com/alloy/MacBacon) support.
 * [Yossef Mendelssohn](https://github.com/ymendel) for Ruby 1.9.2 compatibility fixes.
 
 Thanks to
