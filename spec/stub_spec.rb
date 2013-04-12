@@ -127,3 +127,65 @@ describe "A method stub with arguments" do
     @object.stubbed_method(:something_else).should == :bar
   end
 end
+
+
+describe "A Method stub" do
+
+  before do
+    @mock= Object.new
+    @mock.stub!(:stubbed_method).with(:expected_arg).and_return(:stubbed_value)
+  end
+
+
+  describe "can use at_least" do
+    it "fails if method is never called" do
+      @mock.should.receive(:message).at_least(4)
+      lambda{
+        @mock.spec_verify
+      }.should.raise(Facon::MockExpectationError).message.should == "Mock 'Object' expected :message with (any args) 4 times, but received it 0 times"
+    end
+
+    it "fails if the method gets call less times that expected" do
+      @mock.should.receive(:message).at_least(4)
+      3.times { @mock.message }
+      lambda{ @mock.spec_verify }.should.raise(Facon::MockExpectationError)
+    end
+
+    it "passed when the method is call" do
+      @mock.should.receive(:message).at_least(4)
+      4.times { @mock.message }
+      lambda{ @mock.spec_verify}.should.not.raise
+    end
+
+    it "is ok if we call the method more times that required" do
+      @mock.should_receive(:message).at_least(4)
+      5.times{ @mock.message}
+      lambda{ @mock.spec_verify }.should.not.raise
+    end
+  end
+
+  describe "can use at most" do 
+    it "fails if never called" do
+      @mock.should.receive(:message).at_most(3)
+      lambda{ @mock.spec_verify }.should.raise(Facon::MockExpectationError).message.should == "Mock 'Object' expected :message with (any args) 3 times, but received it 0 times"
+    end
+
+    it "fails when call more expected" do 
+      @mock.should.receive(:message).at_most(3)
+      4.times { @mock.message }
+      lambda{ @mock.spec_verify }.should.raise(Facon::MockExpectationError).message.should == "Mock 'Object' expected :message with (any args) 3 times, but received it 4 times"
+    end
+
+    it "passes when the method is call less times that expected" do
+      @mock.should.receive(:message).at_most(3)
+      2.times { @mock.message }
+      lambda{ @mock.spec_verify}.should.not.raise(Facon::MockExpectationError)
+    end
+
+    it "passes when we call the method axactly the same number of times" do
+      @mock.should.receive(:message).at_most(3)
+      3.times { @mock.message }
+      lambda{ @mock.spec_verify}.should.not.raise(Facon::MockExpectationError)
+    end
+  end
+end
