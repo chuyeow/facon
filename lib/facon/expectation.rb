@@ -79,12 +79,25 @@ module Facon
     end
 
     # Returns true if this expectation has been met.
-    # TODO at_least and at_most conditions
     def met?
-      return true if @expected_received_count == :any ||
-        @expected_received_count == @actual_received_count
+      return true if meets_at_most_requirements? ||
+        meets_at_least_requirements? ||
+        (@expected_received_count == :any) ||
+        (@expected_received_count == @actual_received_count)
 
       raise_expectation_error(self)
+    end
+
+    def at_least(val)
+      @at_least = true
+      @expected_received_count = val
+      self
+    end
+
+    def at_most(val)
+      @at_most = true
+      @expected_received_count = val
+      self
     end
 
     # Returns true if the given <code>method</code> and arguments match this
@@ -113,6 +126,14 @@ module Facon
     def never; times(0); end
 
     private
+      def meets_at_most_requirements?
+        @at_most and ((@expected_received_count >= @actual_received_count) && (@actual_received_count != 0))
+      end
+
+      def meets_at_least_requirements?
+        @at_least and @actual_received_count >= @expected_received_count 
+      end
+
       def check_arguments(args)
         case @argument_expectation
         when :any then true
