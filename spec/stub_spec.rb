@@ -93,6 +93,7 @@ describe "A method stub" do
   end
 
   it "should ignore when the stubbed method is never called" do
+    true.should == true
   end
 end
 
@@ -104,10 +105,11 @@ describe "A method stub with arguments" do
   end
 
   it "should ignore when never called" do
+    true.should == true
   end
 
   it "should ignore when called with expected argument" do
-    @object.stubbed_method(:expected_arg)
+    @object.stubbed_method(:expected_arg).should == :stubbed_value
   end
 
   it "should raise a NoMethodError when called with no arguments" do
