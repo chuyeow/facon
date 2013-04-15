@@ -213,10 +213,10 @@ describe "A mock object" do
     lambda { @mock.spec_verify }.should.not.raise
   end
 
-  it "should raise a MockExpectationError when never receiving a message but expecting it at most a few times" do
+  it "should pass when never receiving a message but expecting it at most a few times" do
     @mock.should.receive(:message).at_most(3)
 
-    lambda { @mock.spec_verify }.should.raise(Facon::MockExpectationError).message.should == "Mock 'test mock' expected :message with (any args) 3 times, but received it 0 times"
+    lambda { @mock.spec_verify }.should.not.raise
   end
 
   it "should raise a MockExpectationError when receiving a message more times than it's expected to be called" do
