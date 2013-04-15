@@ -182,4 +182,65 @@ describe "A mock object" do
 
     lambda { @mock.spec_verify }.should.raise(Facon::MockExpectationError).message.should == "Mock 'test mock' expected :message with (any args) 0 times, but received it 1 time"
   end
+
+  it "should raise a MockExpectationError when never receiving a message but expecting it at least 2 times" do
+    @mock.should.receive(:message).at_least(2)
+
+    lambda { @mock.spec_verify }.should.raise(Facon::MockExpectationError).message.should == "Mock 'test mock' expected :message with (any args) 2 times, but received it 0 times"
+  end
+
+  it "should raise a MockExpectationError when receiving a message fewer times than expected" do
+    @mock.should.receive(:message).at_least(4)
+
+    3.times { @mock.message }
+
+    lambda { @mock.spec_verify }.should.raise(Facon::MockExpectationError)
+  end
+
+  it "should pass when receiving a message at least the number of times it's expected to be called" do
+    @mock.should.receive(:message).at_least(4)
+
+    4.times { @mock.message }
+
+    lambda { @mock.spec_verify }.should.not.raise
+  end
+
+  it "should pass when receiving a message more times than the least number of times it's expected to be called" do
+    @mock.should_receive(:message).at_least(4)
+
+    5.times { @mock.message}
+
+    lambda { @mock.spec_verify }.should.not.raise
+  end
+
+  it "should raise a MockExpectationError when never receiving a message but expecting it at most a few times" do
+    @mock.should.receive(:message).at_most(3)
+
+    lambda { @mock.spec_verify }.should.raise(Facon::MockExpectationError).message.should == "Mock 'test mock' expected :message with (any args) 3 times, but received it 0 times"
+  end
+
+  it "should raise a MockExpectationError when receiving a message more times than it's expected to be called" do
+    @mock.should.receive(:message).at_most(3)
+
+    4.times { @mock.message }
+
+    lambda { @mock.spec_verify }.should.raise(Facon::MockExpectationError).message.should == "Mock 'test mock' expected :message with (any args) 3 times, but received it 4 times"
+  end
+
+  it "should pass when receiving a message fewer times than the most number of times it's expected to be called" do
+    @mock.should.receive(:message).at_most(3)
+
+    2.times { @mock.message }
+
+    lambda { @mock.spec_verify}.should.not.raise(Facon::MockExpectationError)
+  end
+
+  it "should pass when receiving a message at most the number of times it's expected to be called" do
+    @mock.should.receive(:message).at_most(3)
+
+    3.times { @mock.message }
+
+    lambda { @mock.spec_verify}.should.not.raise(Facon::MockExpectationError)
+  end
+
 end
