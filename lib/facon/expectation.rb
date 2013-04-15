@@ -127,11 +127,11 @@ module Facon
 
     private
       def meets_at_most_requirements?
-        @at_most and ((@expected_received_count >= @actual_received_count) && (@actual_received_count != 0))
+        @at_most && (@expected_received_count >= @actual_received_count) && (@actual_received_count != 0)
       end
 
       def meets_at_least_requirements?
-        @at_least and @actual_received_count >= @expected_received_count 
+        @at_least && (@actual_received_count >= @expected_received_count)
       end
 
       def check_arguments(args)
