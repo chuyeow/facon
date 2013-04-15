@@ -33,6 +33,18 @@ You can now write [Bacon](https://github.com/chneukirchen/bacon) specs like this
 
       get('/people/show/1')
     end
+
+    it "knows how many times we call a method" do
+      Person.should.receive(:find).at_least(3)
+
+      Person.list
+    end
+
+    it "can use at_most" do
+      Person.should.receive(:find).at_most(3)
+
+      Person.list
+    end
   end
 ```
 
@@ -78,7 +90,7 @@ Todos
 * test/unit and RSpec integration.
 * Remove the `$facon_mocks` global.
 * Throw away unnecessary code.
-* Implement `exactly`, `at_least`, `at_most` expectations.
+* Implement `exactly` expectation.
 
 Contributors
 ------------
@@ -86,6 +98,7 @@ Contributors
 * [James Tucker](https://github.com/raggi) for #times, #once, #never expectation matchers.
 * [Peter Kim](https://github.com/petejkim) for [MacBacon](https://github.com/alloy/MacBacon) support.
 * [Yossef Mendelssohn](https://github.com/ymendel) for Ruby 1.9.2 compatibility fixes.
+* [Ivan Acosta-Rubio](https://github.com/ivanacostarubio) for at_most and at_least expectations.
 
 Thanks to
 ---------
