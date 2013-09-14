@@ -78,7 +78,7 @@ Simply install the gem:
   `gem install facon`
 
 Or add it to your Gemfile:
-  `gem 'bacon'`
+  `gem 'facon'`
 
 The Source Code
 ---------------
