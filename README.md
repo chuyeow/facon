@@ -5,6 +5,8 @@ Facon is a mocking library in the spirit of the [Bacon](https://github.com/chneu
 
 [![Build Status](https://travis-ci.org/chuyeow/facon.png)](https://travis-ci.org/chuyeow/facon)
 
+[![Coverage Status](https://coveralls.io/repos/chuyeow/facon/badge.png)](https://coveralls.io/r/chuyeow/facon)
+
 Synopsis
 --------
 
