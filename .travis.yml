@@ -1,4 +1,4 @@
-script: bacon spec/*_spec.rb
+script: bundle exec bacon spec/*_spec.rb
 
 language: ruby
 
