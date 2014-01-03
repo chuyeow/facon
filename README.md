@@ -136,4 +136,4 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/chuyeow/facon/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
+[![Analytics](https://ga-beacon.appspot.com/UA-46828034-1/facon/readme)](https://github.com/igrigorik/ga-beacon)
